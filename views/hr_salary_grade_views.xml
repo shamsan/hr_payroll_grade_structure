@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Salary Grade List View -->
+    <record id="hr_salary_grade_view_list" model="ir.ui.view">
+        <field name="name">hr.salary.grade.list</field>
+        <field name="model">hr.salary.grade</field>
+        <field name="arch" type="xml">
+            <list string="Salary Grades">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Salary Grade Form View -->
+    <record id="hr_salary_grade_view_form" model="ir.ui.view">
+        <field name="name">hr.salary.grade.form</field>
+        <field name="model">hr.salary.grade</field>
+        <field name="arch" type="xml">
+            <form string="Salary Grade">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="name" placeholder="e.g., Senior Developer"/>
+                            <field name="code" placeholder="e.g., SD"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Grade Levels" name="grade_levels">
+                            <field name="grade_level_ids">
+                                <list string="Grade Levels" editable="bottom">
+                                    <field name="level"/>
+                                    <field name="basic_salary" widget="monetary"/>
+                                    <field name="allowances" widget="monetary"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Salary Grade Search View -->
+    <record id="hr_salary_grade_view_search" model="ir.ui.view">
+        <field name="name">hr.salary.grade.search</field>
+        <field name="model">hr.salary.grade</field>
+        <field name="arch" type="xml">
+            <search string="Search Salary Grades">
+                <field name="name"/>
+                <field name="code"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Salary Grade Action -->
+    <record id="hr_salary_grade_action" model="ir.actions.act_window">
+        <field name="name">Salary Grades</field>
+        <field name="res_model">hr.salary.grade</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Salary Grade
+            </p>
+            <p>
+                Salary grades help you organize and standardize compensation structures across your organization.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu: Salary Structure under HR -->
+    <menuitem id="menu_hr_salary_structure"
+              name="Salary Structure"
+              parent="hr.menu_hr_root"
+              sequence="50"/>
+
+    <!-- Submenu: Salary Grades -->
+    <menuitem id="menu_hr_salary_grade"
+              name="Salary Grades"
+              parent="menu_hr_salary_structure"
+              action="hr_salary_grade_action"
+              sequence="10"/>
+
+    <!-- Submenu: Grade Levels -->
+    <menuitem id="menu_hr_grade_level"
+              name="Grade Levels"
+              parent="menu_hr_salary_structure"
+              action="hr_grade_level_action"
+              sequence="20"/>
+</odoo>

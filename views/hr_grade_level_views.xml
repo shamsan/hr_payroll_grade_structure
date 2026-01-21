@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Grade Level List View -->
+    <record id="hr_grade_level_view_list" model="ir.ui.view">
+        <field name="name">hr.grade.level.list</field>
+        <field name="model">hr.grade.level</field>
+        <field name="arch" type="xml">
+            <list string="Grade Levels">
+                <field name="name"/>
+                <field name="salary_grade_id"/>
+                <field name="level"/>
+                <field name="basic_salary" widget="monetary"/>
+                <field name="allowances" widget="monetary"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Grade Level Form View -->
+    <record id="hr_grade_level_view_form" model="ir.ui.view">
+        <field name="name">hr.grade.level.form</field>
+        <field name="model">hr.grade.level</field>
+        <field name="arch" type="xml">
+            <form string="Grade Level">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="salary_grade_id" options="{'no_create': True}"/>
+                            <field name="level"/>
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="basic_salary" widget="monetary"/>
+                            <field name="allowances" widget="monetary"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Grade Level Search View -->
+    <record id="hr_grade_level_view_search" model="ir.ui.view">
+        <field name="name">hr.grade.level.search</field>
+        <field name="model">hr.grade.level</field>
+        <field name="arch" type="xml">
+            <search string="Search Grade Levels">
+                <field name="name"/>
+                <field name="salary_grade_id"/>
+                <field name="level"/>
+                <group expand="0" string="Group By">
+                    <filter string="Salary Grade" name="group_by_grade" 
+                            context="{'group_by': 'salary_grade_id'}"/>
+                    <filter string="Level" name="group_by_level" 
+                            context="{'group_by': 'level'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Grade Level Action -->
+    <record id="hr_grade_level_action" model="ir.actions.act_window">
+        <field name="name">Grade Levels</field>
+        <field name="res_model">hr.grade.level</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_group_by_grade': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Grade Level
+            </p>
+            <p>
+                Grade levels define specific salary ranges within each salary grade (A, B, C, or D).
+            </p>
+        </field>
+    </record>
+</odoo>
