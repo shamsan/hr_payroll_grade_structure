@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'HR Payroll Grade Structure',
     'version': '18.0.1.0.0',
